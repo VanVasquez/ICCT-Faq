@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="css/styls.css" />
+    <title>ICCT FAQS</title>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div class="container bg-transparent">
+      <img src="img/logo.png" alt="" class="rounded mx-auto d-block mt-5" />
+      <h4 class="mb-4 mt-4 text-center text-light">ICCT FAQs</h4>
+      <div
+        class="accordion accordion-flush border-0 border-primary"
+        id="accordionFlushExample"
+      >
+        <a
+          href="faqs/new"
+          class="btn btn-success mb-4 mt-4 float-end mx-auto me-4"
+          >Add new</a
+        >
+        <% faqs.forEach(faq => { %>
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="flush-headingOne">
+            <button
+              class="accordion-button collapsedd"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#<%= faq.slug %>"
+              aria-expanded="false"
+              aria-controls="flush-collapseOne"
+            >
+              <%= faq.title %>
+            </button>
+          </h2>
+          <div
+            id="<%=faq.slug%>"
+            class="accordion-collapse collapse"
+            aria-labelledby="flush-headingOne"
+            data-bs-parent="#accordionFlushExample"
+          >
+            <div class="accordion-body">
+              <%= faq.description %>
+              <div class="text-muted">
+                Created at: <%= faq.createdAt.toLocaleDateString() %>
+              </div>
+            </div>
+          </div>
+        </div>
+        <% }) %>
+      </div>
+    </div>
+  </body>
+</html>
